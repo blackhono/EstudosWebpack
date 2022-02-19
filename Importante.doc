@@ -2,3 +2,49 @@ Todos os projetos aqui dentro do jsTootlingEES6Modules precisam
 de NPM I 
 
 para que possam ser usados
+
+
+
+Como utilizar alguns recursos em navegadores antigos
+
+Basta ir no seu MAIN.js(seu arquivo principal javascript)
+e fazer o import desses recursos (isso ajuda em muitos 
+casos). Vou dar um exemplo sobre Promises e async/await.
+
+Exemplo:
+
+function promise(){
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            console.log('Sou uma promisse rodando em navegadores antigos')
+            resolve();
+        },2000)
+    })
+}
+
+export default async functio(){
+    await promise();
+    console.log('terminou');
+}
+
+Para esse caso funcionar temos que fazer o import do 
+core-js/stable e do regenerator-runtime/runtime;
+
+Então nosso main.js vai ficar assim:
+
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
+import executaFuncaoPromise from 'local do arquivo com o
+código anterior';
+
+executaFuncaoPromise();
+
+Prontinho isso já deve garantir funcionar em navegadores
+como internet explorer... 11,10 e 9!
+
+mas né lembre-se que para o css e outros recursos
+você tera que buscar como fazer a mesma coisa.
+
+
+Fica a dica!
